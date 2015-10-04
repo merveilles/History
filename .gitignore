@@ -1,3 +1,14 @@
+#
+# Annals
+#
+
+# Ignore Slack data
+data/
+
+#
+# Ruby
+#
+
 *.gem
 *.rbc
 /.config

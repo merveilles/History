@@ -1,0 +1,24 @@
+{
+  "name": "archivist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merveilles/annals.git"
+  },
+  "author": "Marshall Bowers <elliott.codes@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/merveilles/annals/issues"
+  },
+  "homepage": "https://github.com/merveilles/annals#readme",
+  "dependencies": {
+    "bookshelf": "^0.8.2",
+    "knex": "^0.8.6",
+    "mysql": "^2.9.0"
+  }
+}

@@ -66,6 +66,8 @@ function addTableColumn(tablename, table, columnName) {
 
 createTables().then(() => {
     console.log('Tables created!');
+
+    process.exit(0);
 }).catch((err) => {
     throw err;
 });

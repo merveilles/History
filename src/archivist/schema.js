@@ -28,7 +28,7 @@ const Schema = {
         },
         tz: {
             type: 'string',
-            nullable: false
+            nullable: true
         },
         tz_label: {
             type: 'string',
@@ -100,6 +100,14 @@ const Schema = {
         id: {
             type: 'bigIncrements',
             primary: true,
+            nullable: false
+        },
+        user_id: {
+            type: 'string',
+            nullable: false
+        },
+        channel_id: {
+            type: 'string',
             nullable: false
         },
         text: {

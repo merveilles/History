@@ -1,6 +1,9 @@
 #
-# Annals
+# History
 #
+
+# Ignore environment variables
+.env
 
 # Ignore Slack data
 data/

@@ -1,3 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'sqlite3', '~> 1.3.10'
+gem 'dotenv'
+
+gem 'mysql', '~> 2.9.1'

@@ -2,4 +2,4 @@ require './history'
 
 history = History.new
 
-puts history.import('data')
+puts history.list_user_names

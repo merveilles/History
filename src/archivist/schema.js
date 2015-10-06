@@ -111,7 +111,7 @@ const Schema = {
             nullable: false
         },
         text: {
-            type: 'string',
+            type: 'text',
             nullable: false
         },
         timestamp: {

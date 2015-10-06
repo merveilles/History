@@ -2,4 +2,4 @@ source 'https://rubygems.org'
 
 gem 'dotenv'
 
-gem 'mysql', '~> 2.9.1'
+gem 'mysql2', '~> 0.4.1'

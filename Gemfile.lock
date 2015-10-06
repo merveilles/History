@@ -2,11 +2,11 @@ GEM
   remote: https://rubygems.org/
   specs:
     dotenv (2.0.1)
-    mysql (2.9.1)
+    mysql2 (0.4.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   dotenv
-  mysql (~> 2.9.1)
+  mysql2 (~> 0.4.1)

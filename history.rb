@@ -1,16 +1,19 @@
 require 'dotenv'
 Dotenv.load
 
-require 'mysql'
+require 'mysql2'
 
 class History
+
     # Initializes a new Merveilles history instance
     def initialize()
-        @db = Mysql.new(
-            ENV['MYSQL_HOST'],
-            ENV['MYSQL_USER'],
-            ENV['MYSQL_PASSWORD'],
-            ENV['MYSQL_DATABASE']
+        Mysql2::Client.default_query_options.merge!(:symbolize_keys => true)
+
+        @db = Mysql2::Client.new(
+            :host => ENV['MYSQL_HOST'],
+            :username => ENV['MYSQL_USER'],
+            :password => ENV['MYSQL_PASSWORD'],
+            :database => ENV['MYSQL_DATABASE']
         )
     end
 
@@ -20,7 +23,7 @@ class History
             SELECT * FROM channels
         SQL
 
-        to_hash_array(results)
+        results.to_a
     end
 
     # Retrieves a list of Merveilles channel names
@@ -29,7 +32,24 @@ class History
             SELECT name FROM channels
         SQL
 
-        to_array(results)
+        results.to_a
+    end
+
+    # Retrieves a channel with the specified Slack ID
+    def get_channel_with_id(id)
+
+    end
+
+    # Retrieves a channel with the specified name
+    def get_channel_with_name(name)
+        statement = @db.prepare <<-SQL
+            SELECT * FROM channels
+            WHERE name = ?
+        SQL
+
+        results = statement.execute(name)
+
+        results.to_a.first
     end
 
     # Retrieves a list of Merveilles users
@@ -38,7 +58,7 @@ class History
             SELECT * FROM users
         SQL
 
-        to_hash_array(results)
+        results.to_a
     end
 
     # Retrieves a list of Merveilles usernames
@@ -47,30 +67,7 @@ class History
             SELECT name FROM users
         SQL
 
-        to_array(results)
+        results.to_a
     end
 
-    private
-
-    # Converts a MySQL result set to an array of hashes
-    def to_hash_array(result_set)
-        array = []
-
-        result_set.each_hash do |row|
-            array.push(row)
-        end
-
-        array
-    end
-
-    # Converts a MySQL result set to an array of values
-    def to_array(result_set)
-        array = []
-
-        result_set.each do |row|
-            array.push(row)
-        end
-
-        array
-    end
 end

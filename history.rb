@@ -1,10 +1,10 @@
 require 'dotenv'
 Dotenv.load
 
-require 'json'
 require 'mysql'
 
 class History
+    # Initializes a new Merveilles history instance
     def initialize()
         @db = Mysql.new(
             ENV['MYSQL_HOST'],
@@ -14,6 +14,7 @@ class History
         )
     end
 
+    # Retrieves a list of Merveilles users
     def list_channels
         results = @db.query <<-SQL
             SELECT * FROM channels
@@ -22,6 +23,7 @@ class History
         to_hash_array(results)
     end
 
+    # Retrieves a list of Merveilles channel names
     def list_channel_names
         results = @db.query <<-SQL
             SELECT name FROM channels
@@ -30,6 +32,7 @@ class History
         to_array(results)
     end
 
+    # Retrieves a list of Merveilles users
     def list_users
         results = @db.query <<-SQL
             SELECT * FROM users
@@ -38,6 +41,7 @@ class History
         to_hash_array(results)
     end
 
+    # Retrieves a list of Merveilles usernames
     def list_user_names
         results = @db.query <<-SQL
             SELECT name FROM users
@@ -48,6 +52,7 @@ class History
 
     private
 
+    # Converts a MySQL result set to an array of hashes
     def to_hash_array(result_set)
         array = []
 
@@ -58,6 +63,7 @@ class History
         array
     end
 
+    # Converts a MySQL result set to an array of values
     def to_array(result_set)
         array = []
 

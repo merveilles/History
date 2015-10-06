@@ -7,18 +7,26 @@ const bookshelf = require('./database')('mysql').bookshelf;
 
 const User = bookshelf.Model.extend({
     tableName: 'users',
-    messages: () => this.hasMany(Message)
+    messages: function () {
+        return this.hasMany(Message);
+    }
 });
 
 const Channel = bookshelf.Model.extend({
     tableName: 'channels',
-    messages: () => this.hasMany(Message)
+    messages: function () {
+        return this.hasMany(Message);
+    }
 });
 
 const Message = bookshelf.Model.extend({
     tableName: 'messages',
-    channel: () => this.belongsTo(Channel),
-    user: () => this.belongsTo(User)
+    channel: function () {
+        return this.belongsTo(Channel, 'channel_id');
+    },
+    user: function () {
+        return this.belongsTo(User, 'user_id');
+    }
 });
 
 const dataDir = '../../data';

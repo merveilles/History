@@ -1,8 +1,8 @@
 require 'json'
 require 'sqlite3'
 
-class Annals
-    def initialize(database = 'annals.db')
+class History
+    def initialize(database = 'history.db')
         @db = SQLite3::Database.new(database)
     end
 

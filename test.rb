@@ -1,5 +1,5 @@
-require './annals'
+require './history'
 
-annals = Annals.new
+history = History.new
 
-puts annals.import('data')
+puts history.import('data')
